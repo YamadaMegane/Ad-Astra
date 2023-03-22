@@ -4,7 +4,14 @@ import earth.terrarium.ad_astra.AdAstra;
 import earth.terrarium.ad_astra.datagen.provider.client.ModBlockStateProvider;
 import earth.terrarium.ad_astra.datagen.provider.client.ModItemModelProvider;
 import earth.terrarium.ad_astra.datagen.provider.client.ModLangProvider;
-import earth.terrarium.ad_astra.datagen.provider.server.*;
+import earth.terrarium.ad_astra.datagen.provider.server.ForgeItemTagProvider;
+import earth.terrarium.ad_astra.datagen.provider.server.ModBlockTagProvider;
+import earth.terrarium.ad_astra.datagen.provider.server.ModConfiguredCarverProvider;
+import earth.terrarium.ad_astra.datagen.provider.server.ModDensityFunctionProvider;
+import earth.terrarium.ad_astra.datagen.provider.server.ModItemTagProvider;
+import earth.terrarium.ad_astra.datagen.provider.server.ModLootTableProvider;
+import earth.terrarium.ad_astra.datagen.provider.server.ModPlanetProvider;
+import earth.terrarium.ad_astra.datagen.provider.server.ModRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -37,5 +44,7 @@ public final class AdAstraDataGenerator {
         generator.addProvider(event.includeServer(), new ModBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ForgeItemTagProvider(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModPlanetProvider(packOutput));
+        generator.addProvider(event.includeServer(), new ModConfiguredCarverProvider(packOutput));
+        generator.addProvider(event.includeServer(), new ModDensityFunctionProvider(packOutput));
     }
 }
