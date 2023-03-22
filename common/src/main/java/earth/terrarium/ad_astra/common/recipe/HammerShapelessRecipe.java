@@ -6,8 +6,6 @@ import earth.terrarium.ad_astra.common.registry.ModItems;
 import earth.terrarium.ad_astra.common.registry.ModRecipeSerializers;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -27,8 +25,8 @@ public class HammerShapelessRecipe extends ShapelessRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer craftingInventory, RegistryAccess registryAccess) {
-        return getResultItem(RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY)).copy();
+    public ItemStack assemble(CraftingContainer craftingInventory) {
+        return getResultItem().copy();
     }
 
     @Override
@@ -62,13 +60,13 @@ public class HammerShapelessRecipe extends ShapelessRecipe {
         public HammerShapelessRecipe fromJson(ResourceLocation id, JsonObject json) {
             ShapelessRecipe shapelessRecipe = super.fromJson(id, json);
             String group = GsonHelper.getAsString(json, "group", "");
-            return new HammerShapelessRecipe(shapelessRecipe.getId(), group,  shapelessRecipe.category(), shapelessRecipe.getResultItem(null), shapelessRecipe.getIngredients());
+            return new HammerShapelessRecipe(shapelessRecipe.getId(), group,  shapelessRecipe.category(), shapelessRecipe.getResultItem(), shapelessRecipe.getIngredients());
         }
 
         @Override
         public HammerShapelessRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             ShapelessRecipe shapelessRecipe = super.fromNetwork(id, buf);
-            return new HammerShapelessRecipe(shapelessRecipe.getId(), shapelessRecipe.getGroup(), shapelessRecipe.category(), shapelessRecipe.getResultItem(null), shapelessRecipe.getIngredients());
+            return new HammerShapelessRecipe(shapelessRecipe.getId(), shapelessRecipe.getGroup(), shapelessRecipe.category(), shapelessRecipe.getResultItem(), shapelessRecipe.getIngredients());
         }
     }
 }

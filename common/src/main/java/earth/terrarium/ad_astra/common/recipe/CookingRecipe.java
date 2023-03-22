@@ -1,6 +1,5 @@
 package earth.terrarium.ad_astra.common.recipe;
 
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -24,11 +23,7 @@ public abstract class CookingRecipe extends ModRecipe {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess access) {
-        return this.getOutput();
-    }
-
-    public ItemStack getOutput() {
+    public ItemStack getResultItem() {
         return this.output.copy();
     }
 

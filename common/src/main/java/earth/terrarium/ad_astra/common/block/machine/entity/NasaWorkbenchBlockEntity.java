@@ -19,6 +19,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NasaWorkbenchBlockEntity extends AbstractMachineBlockEntity {
 
     public NasaWorkbenchBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -63,7 +66,7 @@ public class NasaWorkbenchBlockEntity extends AbstractMachineBlockEntity {
 
     public void spawnOutputAndClearInput(NasaWorkbenchRecipe recipe) {
         BlockPos pos = this.getBlockPos();
-        ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 2.5, pos.getZ() + 0.5, recipe.getResultItem(level.registryAccess()).copy());
+        ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 2.5, pos.getZ() + 0.5, recipe.getResultItem().copy());
         itemEntity.setDeltaMovement(itemEntity.getDeltaMovement().scale(0.5));
         this.level.addFreshEntity(itemEntity);
         itemEntity.setDefaultPickUpDelay();

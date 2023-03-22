@@ -25,7 +25,7 @@ public class EmiCompressingRecipe implements EmiRecipe {
 		this.id = recipe.getId();
 		this.recipe = recipe;
 		this.input = EmiIngredient.of(recipe.getIngredients().get(0));
-		this.output = EmiStack.of(recipe.getOutput());
+		this.output = EmiStack.of(recipe.getResultItem());
 	}
 
 	@Override

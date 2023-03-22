@@ -8,7 +8,6 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import earth.terrarium.botarium.common.item.ItemStackHolder;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -27,12 +26,12 @@ import java.util.Map.Entry;
 public class SpaceSuitShapedRecipe extends ShapedRecipe {
 
     public SpaceSuitShapedRecipe(ShapedRecipe internal) {
-        super(internal.getId(), internal.getGroup(), internal.category(), internal.getWidth(), internal.getHeight(), internal.getIngredients(), internal.getResultItem(null));
+        super(internal.getId(), internal.getGroup(), internal.category(), internal.getWidth(), internal.getHeight(), internal.getIngredients(), internal.getResultItem());
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer inv, RegistryAccess registryAccess) {
-        ItemStack assemble = super.assemble(inv, registryAccess).copy();
+    public ItemStack assemble(CraftingContainer inv) {
+        ItemStack assemble = super.assemble(inv).copy();
         CompoundTag assemblingTag = null;
         Map<Fluid, FluidHolder> assemblingOxygens = new HashMap<>();
 

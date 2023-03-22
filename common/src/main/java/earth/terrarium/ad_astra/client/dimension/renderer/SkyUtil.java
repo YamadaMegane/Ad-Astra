@@ -39,6 +39,7 @@ public class SkyUtil {
     public static void preRender(ClientLevel level, LevelRenderer levelRenderer, Camera camera, Matrix4f projectionMatrix, BufferBuilder bufferBuilder, PlanetSkyRenderer.SunsetColour colourType, int sunsetAngle, PoseStack poseStack, float tickDelta) {
 
         // Render colours.
+        RenderSystem.disableTexture();
         Vec3 vec3d = level.getSkyColor(camera.getPosition(), tickDelta);
         float f = (float) vec3d.x();
         float g = (float) vec3d.y();
@@ -55,6 +56,7 @@ public class SkyUtil {
         RenderSystem.defaultBlendFunc();
 
         renderColouring(colourType, bufferBuilder, poseStack, level, tickDelta, level.getTimeOfDay(tickDelta), sunsetAngle);
+        RenderSystem.enableTexture();
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
@@ -73,8 +75,8 @@ public class SkyUtil {
         } else {
             RenderSystem.setShaderColor(f, g, h, 1.0f);
         }
+        RenderSystem.enableTexture();
         RenderSystem.depthMask(true);
-        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
     public static boolean isSubmerged(Camera camera) {
@@ -201,6 +203,7 @@ public class SkyUtil {
         };
         if (fogColours != null) {
             RenderSystem.setShader(GameRenderer::getPositionColorShader);
+            RenderSystem.disableTexture();
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
             poseStack.pushPose();
             poseStack.mulPose(Axis.XP.rotationDegrees(90.0f));
