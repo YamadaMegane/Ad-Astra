@@ -1,6 +1,7 @@
 package earth.terrarium.ad_astra.client.util.forge;
 
 import earth.terrarium.ad_astra.client.util.ClientPlatformUtils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
@@ -8,10 +9,14 @@ import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelManager;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 
 public class ClientPlatformUtilsImpl {
     public static BakedModel getModel(ModelManager dispatcher, ResourceLocation id) {
@@ -24,5 +29,12 @@ public class ClientPlatformUtilsImpl {
 
     public static void registerItemProperty(Item item, ResourceLocation name, ClampedItemPropertyFunction property) {
         ItemProperties.register(item, name, property);
+    }
+
+    public static Component getFluidTranslation(Fluid fluid) {
+        if (fluid == Fluids.EMPTY) {
+            return Component.translatable("item.ad_astra.empty_tank").setStyle(Style.EMPTY.withColor(ChatFormatting.AQUA));
+        }
+        return fluid.getFluidType().getDescription();
     }
 }

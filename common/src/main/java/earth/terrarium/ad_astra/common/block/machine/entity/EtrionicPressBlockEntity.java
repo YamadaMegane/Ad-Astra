@@ -93,9 +93,9 @@ public class EtrionicPressBlockEntity extends CookingMachineBlockEntity implemen
         getItem(0).shrink(1);
         ItemStack item = getItem(1);
         if (item.isEmpty()) {
-            setItem(1, recipe.getResultItem().copy());
+            setItem(1, recipe.getResultItem(level.registryAccess()).copy());
         } else {
-            item.grow(recipe.getResultItem().getCount());
+            item.grow(recipe.getResultItem(level.registryAccess()).getCount());
         }
         recipe = null;
         update();
@@ -104,7 +104,7 @@ public class EtrionicPressBlockEntity extends CookingMachineBlockEntity implemen
     private boolean canCraft() {
         if (recipe != null) {
             ItemStack output = getItem(1);
-            return output.isEmpty() || (ItemStack.isSameItemSameTags(output, recipe.getResultItem()) && recipe.getResultItem().getCount() + output.getCount() <= output.getMaxStackSize());
+            return output.isEmpty() || (ItemStack.isSameItemSameTags(output, recipe.getResultItem(level.registryAccess())) && recipe.getResultItem(level.registryAccess()).getCount() + output.getCount() <= output.getMaxStackSize());
         }
         return false;
     }

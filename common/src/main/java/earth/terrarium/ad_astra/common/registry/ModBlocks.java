@@ -17,10 +17,10 @@ import earth.terrarium.ad_astra.common.block.slidingdoor.SlidingDoorBlock;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import earth.terrarium.botarium.common.registry.fluid.BotariumLiquidBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -117,8 +117,8 @@ public class ModBlocks {
     public static final RegistryEntry<Block> STEEL_PLATING_SLAB = SLABS.register("steel_plating_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> STEEL_PILLAR = PILLARS.register("steel_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> GLOWING_STEEL_PILLAR = PILLARS.register("glowing_steel_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER).lightLevel((state) -> 15)));
-    public static final RegistryEntry<Block> STEEL_BUTTON = BUTTONS.register("steel_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), 20, false, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
-    public static final RegistryEntry<Block> STEEL_PRESSURE_PLATE = PRESSURE_PLATES.register("steel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON));
+    public static final RegistryEntry<Block> STEEL_BUTTON = BUTTONS.register("steel_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), BlockSetType.IRON, 20, false));
+    public static final RegistryEntry<Block> STEEL_PRESSURE_PLATE = PRESSURE_PLATES.register("steel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), BlockSetType.IRON));
 
     public static final RegistryEntry<Block> ETRIUM_BLOCK = CUBES.register("etrium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> ETRIUM_PLATING = CUBES.register("etrium_plating", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
@@ -126,8 +126,8 @@ public class ModBlocks {
     public static final RegistryEntry<Block> ETRIUM_PLATING_SLAB = SLABS.register("etrium_plating_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> ETRIUM_PILLAR = PILLARS.register("etrium_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> GLOWING_ETRIUM_PILLAR = PILLARS.register("glowing_etrium_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER).lightLevel((state) -> 15)));
-    public static final RegistryEntry<Block> ETRIUM_BUTTON = BUTTONS.register("etrium_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), 20, false, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
-    public static final RegistryEntry<Block> ETRIUM_PRESSURE_PLATE = PRESSURE_PLATES.register("etrium_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON));
+    public static final RegistryEntry<Block> ETRIUM_BUTTON = BUTTONS.register("etrium_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), BlockSetType.IRON, 20, false));
+    public static final RegistryEntry<Block> ETRIUM_PRESSURE_PLATE = PRESSURE_PLATES.register("etrium_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), BlockSetType.IRON));
 
     public static final RegistryEntry<Block> RAW_DESMIUM_BLOCK = CUBES.register("raw_desmium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> DESMIUM_BLOCK = CUBES.register("desmium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
@@ -136,8 +136,8 @@ public class ModBlocks {
     public static final RegistryEntry<Block> DESMIUM_PLATING_SLAB = SLABS.register("desmium_plating_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> DESMIUM_PILLAR = PILLARS.register("desmium_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> GLOWING_DESMIUM_PILLAR = PILLARS.register("glowing_desmium_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER).lightLevel((state) -> 15)));
-    public static final RegistryEntry<Block> DESMIUM_BUTTON = BUTTONS.register("desmium_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), 20, false, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
-    public static final RegistryEntry<Block> DESMIUM_PRESSURE_PLATE = PRESSURE_PLATES.register("desmium_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON));
+    public static final RegistryEntry<Block> DESMIUM_BUTTON = BUTTONS.register("desmium_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), BlockSetType.IRON, 20, false));
+    public static final RegistryEntry<Block> DESMIUM_PRESSURE_PLATE = PRESSURE_PLATES.register("desmium_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), BlockSetType.IRON));
 
     public static final RegistryEntry<Block> RAW_THERMALYTE_BLOCK = CUBES.register("raw_thermalyte_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> THERMALYTE_BLOCK = CUBES.register("thermalyte_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
@@ -146,8 +146,8 @@ public class ModBlocks {
     public static final RegistryEntry<Block> THERMALYTE_PLATING_SLAB = SLABS.register("thermalyte_plating_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> THERMALYTE_PILLAR = PILLARS.register("thermalyte_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> GLOWING_THERMALYTE_PILLAR = PILLARS.register("glowing_thermalyte_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER).lightLevel((state) -> 15)));
-    public static final RegistryEntry<Block> THERMALYTE_BUTTON = BUTTONS.register("thermalyte_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), 20, false, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
-    public static final RegistryEntry<Block> THERMALYTE_PRESSURE_PLATE = PRESSURE_PLATES.register("thermalyte_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON));
+    public static final RegistryEntry<Block> THERMALYTE_BUTTON = BUTTONS.register("thermalyte_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), BlockSetType.IRON, 20, false));
+    public static final RegistryEntry<Block> THERMALYTE_PRESSURE_PLATE = PRESSURE_PLATES.register("thermalyte_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), BlockSetType.IRON));
 
     public static final RegistryEntry<Block> VESNIUM_BLOCK = CUBES.register("vesnium_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).color(MaterialColor.TERRACOTTA_GRAY)));
     public static final RegistryEntry<Block> VESNIUM_CRYSTAL_BLOCK = CUBES.register("vesnium_crystal_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).color(MaterialColor.TERRACOTTA_GRAY)));
@@ -165,8 +165,8 @@ public class ModBlocks {
     public static final RegistryEntry<Block> AEROLYTE_PLATING_SLAB = SLABS.register("aerolyte_plating_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> AEROLYTE_PILLAR = PILLARS.register("aerolyte_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER)));
     public static final RegistryEntry<Block> GLOWING_AEROLYTE_PILLAR = PILLARS.register("glowing_aerolyte_pillar", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.CUT_COPPER).lightLevel((state) -> 15)));
-    public static final RegistryEntry<Block> AEROLYTE_BUTTON = BUTTONS.register("aerolyte_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), 20, false, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
-    public static final RegistryEntry<Block> AEROLYTE_PRESSURE_PLATE = PRESSURE_PLATES.register("aerolyte_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON));
+    public static final RegistryEntry<Block> AEROLYTE_BUTTON = BUTTONS.register("aerolyte_button", () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON).sound(SoundType.COPPER), BlockSetType.IRON, 20, false));
+    public static final RegistryEntry<Block> AEROLYTE_PRESSURE_PLATE = PRESSURE_PLATES.register("aerolyte_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE).sound(SoundType.COPPER), BlockSetType.IRON));
 
     public static final RegistryEntry<Block> SKY_STONE = CUBES.register("sky_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryEntry<Block> SKY_STONE_STAIRS = STAIRS.register("sky_stone_stairs", () -> new StairBlock(SKY_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE)));

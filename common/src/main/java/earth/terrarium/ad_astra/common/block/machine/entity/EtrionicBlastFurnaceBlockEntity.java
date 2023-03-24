@@ -88,23 +88,21 @@ public class EtrionicBlastFurnaceBlockEntity extends CookingMachineBlockEntity i
     }
 
     private void craft() {
-        if (recipe == null) return;
+        if (recipe == null || level == null) return;
         getItem(0).shrink(1);
         ItemStack item = getItem(1);
         if (item.isEmpty()) {
-            setItem(1, recipe.getResultItem().copy());
+            setItem(1, recipe.getResultItem(level.registryAccess()).copy());
         } else {
-            item.grow(recipe.getResultItem().getCount());
+            item.grow(recipe.getResultItem(level.registryAccess()).getCount());
         }
         recipe = null;
         update();
     }
 
     private boolean canCraft() {
-        if (recipe != null) {
-            ItemStack output = getItem(1);
-            return output.isEmpty() || (ItemStack.isSameItemSameTags(output, recipe.getResultItem()) && recipe.getResultItem().getCount() + output.getCount() <= output.getMaxStackSize());
-        }
-        return false;
+        if (recipe == null || level == null) return false;
+        ItemStack output = getItem(1);
+        return output.isEmpty() || (ItemStack.isSameItemSameTags(output, recipe.getResultItem(level.registryAccess())) && recipe.getResultItem(level.registryAccess()).getCount() + output.getCount() <= output.getMaxStackSize());
     }
 }

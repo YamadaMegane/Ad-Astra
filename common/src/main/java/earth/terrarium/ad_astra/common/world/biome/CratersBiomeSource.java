@@ -28,8 +28,6 @@ public class CratersBiomeSource extends BiomeSource {
     private final double erosionThreshold;
 
     public CratersBiomeSource(Holder<Biome> defaultBiome, List<List<DepthBiome>> biomeLists, double erosionThreshold) {
-        super(Streams.concat(Stream.of(defaultBiome), biomeLists.stream().flatMap(List::stream).map(DepthBiome::biome)));
-
         this.defaultBiome = defaultBiome;
         this.allowedBiomes = biomeLists;
         this.erosionThreshold = erosionThreshold;
@@ -38,6 +36,11 @@ public class CratersBiomeSource extends BiomeSource {
     @Override
     protected Codec<? extends BiomeSource> codec() {
         return CODEC;
+    }
+
+    @Override
+    protected Stream<Holder<Biome>> collectPossibleBiomes() {
+        return Streams.concat(Stream.of(defaultBiome), this.allowedBiomes.stream().flatMap(List::stream).map(DepthBiome::biome));
     }
 
     @Override

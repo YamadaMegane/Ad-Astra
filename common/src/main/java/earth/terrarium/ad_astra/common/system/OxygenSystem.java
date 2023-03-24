@@ -1,7 +1,7 @@
 package earth.terrarium.ad_astra.common.system;
 
 import earth.terrarium.ad_astra.common.data.PlanetData;
-import earth.terrarium.ad_astra.common.registry.ModDamageSource;
+import earth.terrarium.ad_astra.common.registry.ModDamageSources;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
@@ -56,7 +56,7 @@ public class OxygenSystem {
     public static void livingEntityTick(LivingEntity entity, ServerLevel level) {
         if (level.getGameTime() % 20 != 0) return;
         if (entityHasOxygen(entity)) return;
-        entity.hurt(ModDamageSource.OXYGEN, 2);
+        entity.hurt(ModDamageSources.of(level, ModDamageSources.OXYGEN), 2);
         entity.setAirSupply(-80);
     }
 }

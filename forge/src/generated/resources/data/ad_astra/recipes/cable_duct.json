@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "ad_astra:cable_duct"
-  }
+  },
+  "show_notification": true
 }

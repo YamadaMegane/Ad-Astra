@@ -14,7 +14,7 @@ public class SpaceMovementSystem {
             double gravity = 0.08 * entityGravity;
             float speed;
 
-            BlockPos blockPos = new BlockPos(entity.getX(), entity.getBoundingBox().minY - 0.5000001, entity.getZ());
+            BlockPos blockPos = BlockPos.containing(entity.getX(), entity.getBoundingBox().minY - 0.5000001, entity.getZ());
 
 
             Vec3 newTravelVector = travelVector;
@@ -51,6 +51,6 @@ public class SpaceMovementSystem {
             }
         }
 
-        entity.calculateEntityAnimation(entity, entity instanceof FlyingAnimal);
+        entity.calculateEntityAnimation(entity instanceof FlyingAnimal);
     }
 }

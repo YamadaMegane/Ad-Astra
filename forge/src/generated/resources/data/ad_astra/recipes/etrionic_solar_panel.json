@@ -23,5 +23,6 @@
   ],
   "result": {
     "item": "ad_astra:etrionic_solar_panel"
-  }
+  },
+  "show_notification": true
 }

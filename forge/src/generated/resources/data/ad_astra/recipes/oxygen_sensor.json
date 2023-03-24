@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "ad_astra:oxygen_sensor"
-  }
+  },
+  "show_notification": true
 }

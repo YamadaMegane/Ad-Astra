@@ -23,5 +23,6 @@
   ],
   "result": {
     "item": "ad_astra:etrionic_press"
-  }
+  },
+  "show_notification": true
 }

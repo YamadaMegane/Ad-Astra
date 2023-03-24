@@ -23,5 +23,6 @@
   ],
   "result": {
     "item": "ad_astra:etrionic_capacitor"
-  }
+  },
+  "show_notification": true
 }

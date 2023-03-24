@@ -2,6 +2,7 @@ package earth.terrarium.ad_astra.common.entity;
 
 import earth.terrarium.ad_astra.common.block.machine.entity.OxygenDistributorBlockEntity;
 import earth.terrarium.ad_astra.common.registry.ModEntityTypes;
+import earth.terrarium.ad_astra.common.util.ModUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -53,9 +54,8 @@ public class AirVortex extends Entity {
             double power = Math.max(0.15, Mth.square(life) / Mth.square(600.0));
             Vec3 scale = Vec3.atCenterOf(blockPosition()).subtract(entity.position()).normalize().scale(power);
             entity.push(scale.x, scale.y, scale.z);
-            if (entity instanceof ServerPlayer) {
-                // Just a simple way to sync the movement packet
-                entity.hurtMarked = true;
+            if (entity instanceof ServerPlayer player) {
+                ModUtils.sendUpdatePacket(player);
             }
         }
     }

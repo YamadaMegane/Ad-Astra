@@ -2,7 +2,7 @@ import groovy.json.JsonOutput
 
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.0-SNAPSHOT" apply false
+    id "dev.architectury.loom" version "1.1-SNAPSHOT" apply false
 
     id "com.modrinth.minotaur" version "2.+"
     id "com.matthewprenger.cursegradle" version "1.4.0" // literally never gonna update
@@ -78,7 +78,7 @@ subprojects {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
         mappings loom.layered() {
             officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-$rootProject.minecraft_version:$rootProject.parchment_version@zip")
+//            parchment("org.parchmentmc.data:parchment-$rootProject.minecraft_version:$rootProject.parchment_version@zip")
         }
     }
 
@@ -105,7 +105,7 @@ subprojects {
                     optional.project "modmenu"
                     optional.project "patchouli"
                     optional.project "jei"
-                    optional.project "roughly-enough-items"
+                    optional.project "rei"
                     optional.project "emi"
                 }
             } else {
@@ -115,7 +115,7 @@ subprojects {
                     required.project "botarium"
                     optional.project "patchouli"
                     optional.project "jei"
-                    optional.project "roughly-enough-items"
+                    optional.project "rei"
                 }
             }
         }

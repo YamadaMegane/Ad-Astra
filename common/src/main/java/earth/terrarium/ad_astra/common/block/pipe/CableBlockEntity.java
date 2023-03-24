@@ -38,9 +38,8 @@ public class CableBlockEntity extends BlockEntity implements InteractablePipe<Pl
         BlockState state2 = level.getBlockState(pos);
         if (state.isAir() || state2.isAir()) return;
 
-
-        PlatformEnergyManager input = getSource().storage();
-        PlatformEnergyManager output = consumer;
+        PlatformEnergyManager input = null;
+        PlatformEnergyManager output = null;
 
         if (!(state.getBlock() instanceof PipeDuctBlock) && !(state2.getBlock() instanceof PipeDuctBlock)) {
             PipeState pipeState = state.getValue(PipeBlock.DIRECTIONS.get(getSource().direction()));
@@ -51,12 +50,18 @@ public class CableBlockEntity extends BlockEntity implements InteractablePipe<Pl
             if (pipeState == PipeState.EXTRACT && pipeState2 == PipeState.EXTRACT) return;
             if (pipeState == PipeState.NONE || pipeState2 == PipeState.NONE) return;
 
-            if (pipeState2 == PipeState.EXTRACT || pipeState == PipeState.INSERT) {
+            if (pipeState2 == PipeState.INSERT || pipeState == PipeState.EXTRACT) {
+                input = source.storage();
+                output = consumer;
+            } else if (pipeState2 == PipeState.EXTRACT || pipeState == PipeState.INSERT) {
                 input = consumer;
-                output = getSource().storage();
+                output = source.storage();
+            } else {
+                return;
             }
         }
 
+        if (input == null || output == null) return;
         EnergyHooks.moveEnergy(input, output, Math.max(0, getTransferAmount() / getConsumers().size()));
         if (level.getBlockEntity(pos.relative(direction)) instanceof BasicContainer container) {
             container.update();

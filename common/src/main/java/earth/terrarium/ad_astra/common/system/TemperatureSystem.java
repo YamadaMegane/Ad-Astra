@@ -11,7 +11,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -78,10 +77,10 @@ public class TemperatureSystem {
         if (entitySafeTemperature(entity)) return;
         int temperature = getLevelTemperature(level, entity.blockPosition());
         if (temperature > SAFE_TEMPERATURE.maxInclusive()) {
-            entity.hurt(DamageSource.ON_FIRE, 6);
+            entity.hurt(entity.damageSources().onFire(), 6);
             entity.setSecondsOnFire(10);
         } else if (temperature < SAFE_TEMPERATURE.minInclusive()) {
-            entity.hurt(DamageSource.FREEZE, 3);
+            entity.hurt(entity.damageSources().freeze(), 3);
             entity.setTicksFrozen(Math.min(entity.getTicksRequiredToFreeze() + TARGET_TEMPERATURE, entity.getTicksFrozen() + 5 * 10));
             RandomSource randomSource = entity.level.getRandom();
             ModUtils.spawnServerParticles((level), ParticleTypes.SNOWFLAKE, entity.getX(), entity.getY() + 1, entity.getZ(), 1, Mth.randomBetween(randomSource, -1.0f, 1.0f) * 0.083333336f, 0.05, (double) Mth.randomBetween(randomSource, -1.0f, 1.0f) * 0.083333336, 0);

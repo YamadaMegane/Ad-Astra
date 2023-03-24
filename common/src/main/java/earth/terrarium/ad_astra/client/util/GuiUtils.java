@@ -10,17 +10,13 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.impl.WrappedBlockFluidContainer;
 import earth.terrarium.botarium.common.fluid.utils.ClientFluidHooks;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
 
 public class GuiUtils {
     public static final ResourceLocation ENERGY_BAR_EMPTY = new ResourceLocation(AdAstra.MOD_ID, "textures/gui/energy_bar_empty.png");
@@ -76,16 +72,9 @@ public class GuiUtils {
 
     public static void createFluidTooltip(AbstractContainerScreen<?> screen, int mouseX, int mouseY, PoseStack poseStack, int x, int y, int tank, WrappedBlockFluidContainer fluidContainer) {
         if (isHovering(x, y, 24, 59, mouseX, mouseY)) {
-            Component component = Component.translatable(LangUtils.FLUID_TANK, FluidHooks.toMillibuckets(fluidContainer.getFluids().get(tank).getFluidAmount()), FluidHooks.toMillibuckets(fluidContainer.getTankCapacity(tank)), getFluidTranslation(fluidContainer.getFluids().get(tank).getFluid()).getString());
+            Component component = Component.translatable(LangUtils.FLUID_TANK, FluidHooks.toMillibuckets(fluidContainer.getFluids().get(tank).getFluidAmount()), FluidHooks.toMillibuckets(fluidContainer.getTankCapacity(tank)), ClientPlatformUtils.getFluidTranslation(fluidContainer.getFluids().get(tank).getFluid()).getString());
             screen.renderTooltip(poseStack, component, mouseX, mouseY);
         }
-    }
-
-    public static Component getFluidTranslation(Fluid fluid) {
-        if (fluid.equals(Fluids.EMPTY)) {
-            return Component.translatable(LangUtils.EMPTY_TANK).setStyle(Style.EMPTY.withColor(ChatFormatting.AQUA));
-        }
-        return Component.translatable(fluid.defaultFluidState().createLegacyBlock().getBlock().getDescriptionId()).setStyle(Style.EMPTY.withColor(ChatFormatting.AQUA));
     }
 
     public static boolean isHovering(int x, int y, int width, int height, double mouseX, double mouseY) {

@@ -23,5 +23,6 @@
   ],
   "result": {
     "item": "ad_astra:vesnium_solar_panel"
-  }
+  },
+  "show_notification": true
 }

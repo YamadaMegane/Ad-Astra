@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "ad_astra:photovoltaic_etrium_cell"
-  }
+  },
+  "show_notification": true
 }

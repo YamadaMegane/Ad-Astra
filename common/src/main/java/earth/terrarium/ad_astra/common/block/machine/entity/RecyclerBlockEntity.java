@@ -107,7 +107,7 @@ public class RecyclerBlockEntity extends CookingMachineBlockEntity implements En
             RECIPE_CACHE.put(stack.getItem(), recipes);
         }
         for (Recipe<?> recipe : RECIPE_CACHE.getOrDefault(stack.getItem(), List.of())) {
-            if (!ItemStack.isSame(recipe.getResultItem(), stack) || recipe.getResultItem().getCount() > stack.getCount())
+            if (!ItemStack.isSame(recipe.getResultItem(level.registryAccess()), stack) || recipe.getResultItem(level.registryAccess()).getCount() > stack.getCount())
                 continue;
             return recipe;
         }
@@ -116,7 +116,7 @@ public class RecyclerBlockEntity extends CookingMachineBlockEntity implements En
 
     private <C extends Container, T extends Recipe<C>> void addRecipes(RecipeType<T> recyclableRecipe, ItemStack stack, List<Recipe<?>> recipes) {
         for (var recipe : level.getRecipeManager().getAllRecipesFor(recyclableRecipe)) {
-            if (!recipe.getResultItem().is(stack.getItem())) {
+            if (!recipe.getResultItem(level.registryAccess()).is(stack.getItem())) {
                 continue;
             }
             recipes.add(recipe);

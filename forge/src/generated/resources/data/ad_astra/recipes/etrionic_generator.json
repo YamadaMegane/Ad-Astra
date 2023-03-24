@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "ad_astra:etrionic_generator"
-  }
+  },
+  "show_notification": true
 }

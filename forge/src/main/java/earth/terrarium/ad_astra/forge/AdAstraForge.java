@@ -6,7 +6,6 @@ import earth.terrarium.ad_astra.client.forge.AdAstraClientForge;
 import earth.terrarium.ad_astra.common.data.PlanetData;
 import earth.terrarium.ad_astra.common.data.energy.EnergyNetworkManager;
 import earth.terrarium.ad_astra.common.data.energy.EnergyNetworkVisibility;
-import earth.terrarium.ad_astra.common.data.energy.forge.EnergyNetworkManagerImpl;
 import earth.terrarium.ad_astra.common.registry.ModCommands;
 import earth.terrarium.ad_astra.common.registry.ModEntityTypes;
 import earth.terrarium.ad_astra.common.registry.ModItems;
@@ -73,7 +72,7 @@ public class AdAstraForge {
         ModItems.onRegisterCreativeTabs((loc, item, items) -> event.registerCreativeModeTab(loc, b -> b
                 .title(Component.translatable("itemGroup." + loc.getNamespace() + "." + loc.getPath()))
                 .icon(() -> item.get().getDefaultInstance())
-                .displayItems((featureFlagSet, output, bl) -> items.forEach(output::accept))
+                .displayItems((itemDisplayParameters, output) -> items.forEach(output::accept))
                 .build()));
     }
 }

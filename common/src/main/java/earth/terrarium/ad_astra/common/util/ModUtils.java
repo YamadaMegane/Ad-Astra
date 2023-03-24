@@ -17,4 +17,9 @@ public class ModUtils {
         g = Mth.clamp(g, 0.0F, 1.0F);
         return g * g * 0.5F;
     }
+
+    // syncs movement between server and client
+    public static void sendUpdatePacket(ServerPlayer player) {
+        player.hurtMarked = true;
+    }
 }

@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "ad_astra:etrionic_core"
-  }
+  },
+  "show_notification": true
 }
