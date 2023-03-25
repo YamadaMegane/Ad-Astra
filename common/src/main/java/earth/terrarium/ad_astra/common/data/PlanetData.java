@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.mojang.serialization.JsonOps;
 import com.teamresourceful.resourcefullib.common.lib.Constants;
 import earth.terrarium.ad_astra.AdAstra;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.PreparableReloadListener;
@@ -22,6 +23,8 @@ public class PlanetData extends SimpleJsonResourceReloadListener {
     private static final Set<ResourceKey<Level>> PLANETS_WITH_OXYGEN = new HashSet<>();
     private static final Map<ResourceKey<Level>, Integer> PLANET_TEMPERATURES = new HashMap<>();
     private static final Map<ResourceKey<Level>, Float> PLANET_GRAVITY_VALUES = new HashMap<>();
+
+    public static final ResourceKey<Registry<Planet>> PLANET_REGISTRY = ResourceKey.createRegistryKey(new ResourceLocation(AdAstra.MOD_ID, "planet_data/planets"));
 
 
     public PlanetData() {
